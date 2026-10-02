@@ -1,0 +1,22 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=${DOMAIN},${SERVER_IP}:3000
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    volumes:
+      - ./homepage:/app/config
+      - /mnt/elements:/mnt/elements:ro
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true

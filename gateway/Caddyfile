@@ -1,0 +1,59 @@
+(cloudflare) {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+}
+
+{
+    admin localhost:2019
+}
+
+{env.DOMAIN}, www.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy homepage:3000
+}
+
+qbittorrent.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy pia:8080
+}
+
+jellyfin.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy jellyfin:8096
+}
+
+sonarr.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy sonarr:8989
+}
+
+radarr.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy radarr:7878
+}
+
+bazarr.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy bazarr:6767
+}
+
+prowlarr.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy prowlarr:9696
+}
+
+flaresolverr.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy flaresolverr:8191
+}
+
+whoami.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy whoami:80
+}
+
+bookorbit.{env.DOMAIN} {
+    import cloudflare
+    reverse_proxy bookorbit-app:3000
+}

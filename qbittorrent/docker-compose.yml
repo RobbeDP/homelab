@@ -1,0 +1,46 @@
+services:
+  pia:
+    image: qmcgaw/gluetun:latest
+    container_name: pia
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
+      - VPN_SERVICE_PROVIDER="private internet access"
+      - VPN_TYPE=openvpn
+      - TZ=Europe/Brussels
+      - SERVER_REGIONS=Netherlands
+      - OPENVPN_PROTOCOL=tcp
+      - OPENVPN_USER=${OPENVPN_USER}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
+    volumes:
+      - ./gluetun:/gluetun
+    networks:
+      - proxy
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: service:pia
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - ./qbittorrent:/config
+      - ${HOME}/torrents:/downloads
+    depends_on:
+      pia:
+        condition: service_healthy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
