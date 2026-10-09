@@ -60,3 +60,8 @@
         icon: bazarr
         description: Subtitle management
         href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:6767"
+
+    - BookOrbit:
+        icon: bookorbit
+        description: Book management
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:3001"
