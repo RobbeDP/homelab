@@ -1,1 +1,5 @@
-homepage/
+homepage/*
+
+!homepage/services.yaml
+!homepage/settings.yaml
+!homepage/widgets.yaml

@@ -1,0 +1,16 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+title: Spyro
+
+layout:
+  Media:
+    style: row
+    columns: 2
+  Download:
+    style: row
+    columns: 2
+  Infrastructure:
+    style: row
+    columns: 2

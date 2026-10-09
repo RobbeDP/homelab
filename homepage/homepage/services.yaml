@@ -1,0 +1,62 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Infrastructure:
+    - Tailscale:
+        icon: tailscale
+        description: Gateway VPN
+
+    - Caddy:
+        icon: caddy
+        description: Reverse proxy & HTTPS
+
+- Download:
+    - qBittorrent:
+        icon: qbittorrent
+        description: Torrent client
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8080"
+        widget:
+          type: qbittorrent
+          url: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8080"
+          username: "{{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}"
+          password: "{{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}"
+
+    - PIA:
+        icon: private-internet-access
+        description: VPN for torrent client
+
+    - Prowlarr:
+        icon: prowlarr
+        description: Indexer management
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:9696"
+
+    - FlareSolverr:
+        icon: flaresolverr
+        description: Cloudflare bypass service
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8191"
+
+- Media:
+    - Jellyfin:
+        icon: jellyfin
+        description: Media server
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8096"
+        widget:
+          type: jellyfin
+          url: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8096"
+          key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
+
+    - Sonarr:
+        icon: sonarr
+        description: TV show management
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8989"
+
+    - Radarr:
+        icon: radarr
+        description: Movie management
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:7878"
+
+    - Bazarr:
+        icon: bazarr
+        description: Subtitle management
+        href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:6767"
