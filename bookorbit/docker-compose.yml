@@ -39,6 +39,7 @@ services:
         condition: service_healthy
     volumes:
       - ${BOOKS_HOST_PATH:-./books}:/books
+      - ${AUDIOBOOKS_HOST_PATH:-./audiobooks}:/audiobooks
       - ./data/app:/data
     read_only: true
     tmpfs:
