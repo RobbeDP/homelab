@@ -42,9 +42,12 @@
         description: Media server
         href: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8096"
         widget:
-          type: jellyfin
-          url: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8096"
-          key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
+            type: jellyfin
+            url: "http://{{HOMEPAGE_VAR_SERVER_IP}}:8096"
+            key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
+            version: 2
+            enableBlocks: true
+            enableNowPlaying: true
 
     - Sonarr:
         icon: sonarr
